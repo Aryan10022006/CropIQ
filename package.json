@@ -1,0 +1,33 @@
+{
+  "name": "yieldguard",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.0.0",
+    "@mantine/hooks": "^7.0.0",
+    "@nivo/core": "^0.93.0",
+    "@nivo/line": "^0.93.0",
+    "@tabler/icons-react": "^2.17.0",
+    "framer-motion": "^10.12.16",
+    "leaflet": "^1.9.4",
+    "next": "^14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.0",
+    "zustand": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/geojson": "^7946.0.16",
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^20.6.1",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.11",
+    "typescript": "^5.5.0"
+  }
+}
