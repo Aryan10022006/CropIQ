@@ -9,25 +9,27 @@
 [![Mantine](https://img.shields.io/badge/Mantine-7.0-339af0)](https://mantine.dev/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
-##  Features
+## 📱 Features
 
 ### Core Functionality
--  **AI-Powered Claims Assessment** - Automated damage analysis using computer vision
--  **UAV Surveillance Integration** - Real-time drone imagery analysis with NDVI
--  **IoT Sensor Network** - Live soil moisture, temperature, and environmental monitoring
--  **Blockchain Verification** - Immutable evidence storage and audit trails
--  **Real-time Farmer Alerts** - SMS and app notifications for critical events
--  **Interactive Dashboard** - Live maps, analytics, and claim tracking
--  **Advanced Search & Filters** - Efficient claim management with multiple filter options
+- 🤖 **AI-Powered Claims Assessment** - Automated damage analysis using computer vision
+- 🚁 **UAV Surveillance Integration** - Real-time drone imagery analysis with NDVI
+- 📡 **IoT Sensor Network** - Live soil moisture, temperature, and environmental monitoring
+- 🔐 **Blockchain Verification** - Immutable evidence storage and audit trails
+- 📢 **Real-time Farmer Alerts** - SMS and app notifications for critical events
+- 📊 **Interactive Dashboard** - Live maps, analytics, and claim tracking
+- 🔍 **Advanced Search & Filters** - Efficient claim management with multiple filter options
+- 🌾 **Farmer Portal (CropIQ)** - User-friendly interface for farmers to monitor crops and file claims
 
 ### Technical Excellence
--  **Next.js 14 App Router** - Server-side rendering and optimal performance
--  **Enterprise UI/UX** - Professional design with Mantine v7 components
--  **Security Headers** - HSTS, CSP, XSS protection, and frame options
--  **PWA Ready** - Progressive Web App with offline capabilities
--  **Accessibility** - WCAG 2.1 AA compliant
--  **SEO Optimized** - Complete metadata, OpenGraph, and sitemap
--  **Performance** - Code splitting, lazy loading, and image optimization
+- ⚡ **Next.js 14 App Router** - Server-side rendering and optimal performance
+- 🎨 **Enterprise UI/UX** - Professional design with Mantine v7 components
+- 📱 **Fully Responsive** - Mobile-first design with burger menus and fluid layouts
+- 🔒 **Security Headers** - HSTS, CSP, XSS protection, and frame options
+- 📦 **PWA Ready** - Progressive Web App with offline capabilities
+- ♿ **Accessibility** - WCAG 2.1 AA compliant
+- 🔍 **SEO Optimized** - Complete metadata, OpenGraph, and sitemap
+- 🚀 **Performance** - Code splitting, lazy loading, and image optimization
 
 ##  Prerequisites
 
@@ -113,47 +115,58 @@ Add these in your Vercel project settings (Settings  Environment Variables):
 | `NEXT_PUBLIC_APP_URL` | https://your-domain.vercel.app | Production |
 | `NEXT_PUBLIC_API_URL` | Your API endpoint | Production |
 
-##  Project Structure
+## 📂 Project Structure
 
 ```
 yieldguard/
- app/
-    layout.tsx              # Root layout with SEO metadata
-    page.tsx                # Landing page
-    error.tsx               # Global error boundary
-    loading.tsx             # Global loading state
-    not-found.tsx           # 404 page
-    global.css              # Global styles
-    theme.ts                # Mantine theme configuration
-    dashboard/
-       layout.tsx          # Dashboard AppShell (Sidebar + Header)
-       page.tsx            # Main dashboard with stats & map
-       loading.tsx         # Dashboard loading state
-    claims/
-       page.tsx            # Claims workflow with filters
-       loading.tsx         # Claims loading state
-    alerts/
-       page.tsx            # Farmer alerts dashboard
-       loading.tsx         # Alerts loading state
-    plot/[id]/
-       page.tsx            # Individual plot details
-    components/
-       dashboard/          # Dashboard components
-       claims/             # Claims components
-       plot/               # Plot components
-       layout/             # Layout components
-    data/                   # Mock data
-    lib/                    # Utilities and types
-    store/                  # State management
- public/
-    images/                 # Static images
-    manifest.json           # PWA manifest
-    robots.txt              # SEO robots file
- next.config.js              # Next.js configuration
- vercel.json                 # Vercel deployment config
- tsconfig.json               # TypeScript configuration
- package.json                # Dependencies
- .env.example                # Environment variables template
+├─ app/
+│   ├─ layout.tsx              # Root layout with SEO metadata
+│   ├─ page.tsx                # Landing page (dual portal selection)
+│   ├─ error.tsx               # Global error boundary
+│   ├─ loading.tsx             # Global loading state
+│   ├─ not-found.tsx           # 404 page
+│   ├─ global.css              # Global styles
+│   ├─ theme.ts                # Mantine theme configuration
+│   ├─ dashboard/              # ASSESSOR PORTAL
+│   │   ├─ layout.tsx          # Dashboard AppShell (Sidebar + Header)
+│   │   ├─ page.tsx            # Main dashboard with stats & map
+│   │   └─ loading.tsx         # Dashboard loading state
+│   ├─ farmer/                 # FARMER PORTAL (CropIQ)
+│   │   ├─ layout.tsx          # Farmer AppShell with green theme
+│   │   ├─ page.tsx            # Farmer dashboard
+│   │   ├─ my-fields/          # Field monitoring
+│   │   ├─ claims/             # Claim tracking
+│   │   ├─ alerts/             # Alerts & advisories
+│   │   ├─ weather/            # Weather forecast
+│   │   └─ support/            # Help & support
+│   ├─ claims/
+│   │   ├─ page.tsx            # Claims workflow with filters
+│   │   └─ loading.tsx         # Claims loading state
+│   ├─ alerts/
+│   │   ├─ page.tsx            # Farmer alerts dashboard
+│   │   └─ loading.tsx         # Alerts loading state
+│   ├─ plot/[id]/
+│   │   └─ page.tsx            # Individual plot details
+│   ├─ components/
+│   │   ├─ dashboard/          # Dashboard components
+│   │   ├─ claims/             # Claims components
+│   │   ├─ plot/               # Plot components
+│   │   └─ layout/             # Layout components
+│   ├─ data/                   # Mock data
+│   ├─ lib/                    # Utilities and types
+│   └─ store/                  # State management
+├─ public/
+│   ├─ images/                 # Static images
+│   ├─ manifest.json           # PWA manifest
+│   └─ robots.txt              # SEO robots file
+├─ next.config.js              # Next.js configuration
+├─ vercel.json                 # Vercel deployment config
+├─ tsconfig.json               # TypeScript configuration
+├─ package.json                # Dependencies
+├─ .env.example                # Environment variables template
+├─ .gitignore                  # Git ignore rules
+├─ MOBILE_RESPONSIVE.md        # Mobile responsiveness documentation
+└─ FEATURES.md                 # Feature documentation
 ```
 
 ##  Key Pages
@@ -192,10 +205,16 @@ yieldguard/
 - Blockchain verification
 - Decision panel with approval workflow
 
-##  UI/UX Features
+## 🎨 UI/UX Features
 
+- **Dual Portal System** - Separate interfaces for Assessors and Farmers
 - **Enterprise Design System** - Consistent, professional appearance
-- **Responsive Layout** - Mobile, tablet, and desktop optimized
+- **Fully Responsive Layout** - Mobile-first design (see [MOBILE_RESPONSIVE.md](MOBILE_RESPONSIVE.md))
+  - Burger menus on mobile for both portals
+  - Fluid typography with CSS clamp()
+  - Adaptive grids (1/2/3/4 columns)
+  - Touch-friendly buttons (min 44px)
+  - No horizontal scroll on any device
 - **Dark/Light Mode Support** - Professional light theme by default
 - **Loading States** - Skeleton screens for smooth UX
 - **Error Handling** - Comprehensive error boundaries
@@ -273,7 +292,7 @@ Built with ❤️ by the YieldGuard Team
 
 - **Anmol Surekha**  
   📞 +91 94796 89897
-  
+
 - **Aryan Tamboli**  
   📞 +91 97022 76874
   

@@ -1,16 +1,18 @@
 'use client';
-import React from 'react';
-import { AppShell, Group, ThemeIcon, Text, NavLink, Avatar, Badge, ActionIcon } from '@mantine/core';
+import React, { useState } from 'react';
+import { AppShell, Group, ThemeIcon, Text, NavLink, Avatar, Badge, ActionIcon, Burger } from '@mantine/core';
 import { 
   IconPlant, IconAlertCircle, IconFileText, IconCloudRain, 
   IconMessageCircle, IconHome, IconLogout, IconBell, IconUser
 } from '@tabler/icons-react';
 import { usePathname } from 'next/navigation';
+import { useDisclosure } from '@mantine/hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function FarmerLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const [opened, { toggle, close }] = useDisclosure();
 
   const navigation = [
     { label: 'My Dashboard', icon: IconHome, href: '/farmer' },
@@ -24,11 +26,11 @@ export default function FarmerLayout({ children }: { children: React.ReactNode }
   return (
     <AppShell
       header={{ height: 70 }}
-      navbar={{ width: 280, breakpoint: 'sm' }}
-      padding="md"
+      navbar={{ width: 280, breakpoint: 'sm', collapsed: { mobile: !opened } }}
+      padding={{ base: 'sm', sm: 'md', lg: 'xl' }}
     >
       {/* Navbar */}
-      <AppShell.Navbar p="md" style={{ background: 'white' }}>
+      <AppShell.Navbar p="md" style={{ background: 'white' }} onClick={close}>
         <AppShell.Section>
           {/* Logo */}
           <Link href="/farmer" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -136,6 +138,9 @@ export default function FarmerLayout({ children }: { children: React.ReactNode }
         }}
       >
         <Group justify="space-between" style={{ width: '100%', height: '100%' }}>
+          {/* Mobile burger */}
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+          
           {/* Left side */}
           <Group gap="md">
             <div
@@ -143,37 +148,39 @@ export default function FarmerLayout({ children }: { children: React.ReactNode }
                 width: 4,
                 height: 40,
                 background: 'linear-gradient(180deg, #10b981 0%, #059669 100%)',
-                borderRadius: 4
+                borderRadius: 4,
+                display: 'none'
               }}
+              className="desktop-only"
             />
             <div>
-              <Text size="lg" fw={800} style={{ lineHeight: 1.2, color: '#0f172a' }}>
+              <Text size="lg" fw={800} style={{ lineHeight: 1.2, color: '#0f172a', fontSize: 'clamp(0.875rem, 3vw, 1.125rem)' }}>
                 CROPIQ FARMER PORTAL
               </Text>
-              <Text size="xs" c="dimmed" fw={500}>
+              <Text size="xs" c="dimmed" fw={500} style={{ display: 'none' }} className="desktop-only">
                 Your Digital Agriculture Assistant
               </Text>
             </div>
           </Group>
 
           {/* Right side */}
-          <Group gap="md">
+          <Group gap="md" style={{ gap: 'clamp(8px, 2vw, 16px)' }}>
             {/* Notifications */}
             <div style={{ position: 'relative' }}>
               <ActionIcon 
                 variant="light" 
                 color="green" 
-                size={42} 
+                size={42}
                 radius="md"
-                style={{ boxShadow: '0 2px 8px rgba(16, 185, 129, 0.15)' }}
+                style={{ boxShadow: '0 2px 8px rgba(16, 185, 129, 0.15)', width: 'clamp(36px, 6vw, 42px)', height: 'clamp(36px, 6vw, 42px)' }}
               >
-                <IconBell size={20} stroke={2} />
+                <IconBell size={18} stroke={2} />
               </ActionIcon>
               <div
                 style={{
                   position: 'absolute',
-                  top: 8,
-                  right: 8,
+                  top: 6,
+                  right: 6,
                   width: 10,
                   height: 10,
                   background: '#ef4444',
@@ -184,8 +191,8 @@ export default function FarmerLayout({ children }: { children: React.ReactNode }
               />
             </div>
 
-            {/* Language */}
-            <Badge size="lg" variant="light" color="green" style={{ cursor: 'pointer' }}>
+            {/* Language - hide on mobile */}
+            <Badge size="lg" variant="light" color="green" style={{ cursor: 'pointer' }} visibleFrom="sm">
               🇮🇳 हिंदी
             </Badge>
           </Group>

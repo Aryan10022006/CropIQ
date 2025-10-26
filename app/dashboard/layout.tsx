@@ -2,14 +2,14 @@
 import '@mantine/core/styles.css';
 import '../global.css';
 import React from 'react';
-import { AppShell, Group, Text, Avatar, Badge, ActionIcon, NavLink, Box, Stack } from '@mantine/core';
+import { AppShell, Group, Text, Avatar, Badge, ActionIcon, NavLink, Box, Stack, Burger } from '@mantine/core';
 import { IconBell, IconDashboard, IconListDetails, IconAlertTriangle, IconChartBar } from '@tabler/icons-react';
 import { useDisclosure } from '@mantine/hooks';
 import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const [opened, { toggle }] = useDisclosure();
+  const [opened, { toggle, close }] = useDisclosure();
   const pathname = usePathname();
   const router = useRouter();
 
@@ -23,7 +23,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <AppShell
       header={{ height: 70 }}
       navbar={{ width: 280, breakpoint: 'sm', collapsed: { mobile: !opened } }}
-      padding="md"
+      padding={{ base: 'sm', sm: 'md', lg: 'xl' }}
       styles={{
         main: {
           background: 'var(--mantine-color-gray-0)',
@@ -37,6 +37,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           background: '#ffffff',
           borderRight: '1px solid var(--mantine-color-gray-2)',
         }}
+        onClick={close}
       >
         <AppShell.Section>
           {/* Logo at the top */}
@@ -148,8 +149,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           boxShadow: '0 1px 3px rgba(0, 0, 0, 0.04)',
         }}
       >
-        <Group h="100%" px="xl" justify="space-between">
+        <Group h="100%" px="xl" justify="space-between" style={{ paddingLeft: 'clamp(16px, 3vw, 40px)', paddingRight: 'clamp(16px, 3vw, 40px)' }}>
           <Group gap="xs">
+            <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
             <Box
               style={{
                 width: 4,
@@ -157,13 +159,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 background: 'linear-gradient(135deg, #2563eb 0%, #10b981 100%)',
                 borderRadius: 2,
               }}
+              visibleFrom="sm"
             />
-            <Text fw={700} size="sm" c="#64748b" tt="uppercase" style={{ letterSpacing: '0.5px' }}>
-              PMFBY Insurance Assessment Platform
+            <Text fw={700} size="sm" c="#64748b" tt="uppercase" style={{ letterSpacing: '0.5px', fontSize: 'clamp(0.625rem, 2vw, 0.875rem)' }}>
+              PMFBY Assessment
             </Text>
           </Group>
 
-          <Group gap="lg">
+          <Group gap="lg" style={{ gap: 'clamp(8px, 2vw, 24px)' }}>
             <Badge
               size="lg"
               variant="light"
@@ -176,11 +179,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   paddingRight: 18,
                   fontWeight: 700,
                   textTransform: 'none',
-                  fontSize: '0.875rem',
+                  fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
                 },
               }}
+              visibleFrom="sm"
             >
-              24 Active Claims
+              24 Active
             </Badge>
 
             <ActionIcon
@@ -188,15 +192,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               color="blue"
               size={42}
               radius="lg"
-              style={{ position: 'relative' }}
+              style={{ position: 'relative', width: 'clamp(36px, 6vw, 42px)', height: 'clamp(36px, 6vw, 42px)' }}
               onClick={() => alert('🔔 3 New Notifications:\n\n✅ Claim #A-2847 approved\n⚠️ High risk alert in Zone 3\n📡 New satellite data available')}
             >
-              <IconBell size={20} stroke={2.5} />
+              <IconBell size={18} stroke={2.5} />
               <Box
                 style={{
                   position: 'absolute',
-                  top: 10,
-                  right: 10,
+                  top: 8,
+                  right: 8,
                   width: 9,
                   height: 9,
                   borderRadius: '50%',
@@ -217,6 +221,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
               }}
+              visibleFrom="sm"
             >
               <Avatar 
                 size={36} 

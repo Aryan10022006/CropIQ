@@ -15,14 +15,14 @@ export default function LandingPage() {
   return (
     <Box style={{ minHeight: '100vh', background: 'var(--mantine-color-gray-0)' }}>
       <Box style={{ background: 'linear-gradient(135deg, #ffffff 0%, #f0f9ff 50%, #ecfdf5 100%)', borderBottom: '1px solid var(--mantine-color-gray-2)' }}>
-        <Container size="xl" py={80}>
+        <Container size="xl" py={80} style={{ paddingTop: 'clamp(40px, 8vw, 80px)', paddingBottom: 'clamp(40px, 8vw, 80px)' }}>
           <Stack gap={40} align="center">
             <Box style={{ textAlign: 'center' }}>
               <Group justify="center" mb="xl">
                 <Box 
                   style={{ 
-                    width: 120, 
-                    height: 120, 
+                    width: 'clamp(80px, 15vw, 120px)', 
+                    height: 'clamp(80px, 15vw, 120px)', 
                     borderRadius: 24, 
                     overflow: 'hidden',
                     border: '3px solid var(--mantine-color-blue-3)',
@@ -46,7 +46,6 @@ export default function LandingPage() {
               </Group>
               <Title 
                 order={1} 
-                size="3.5rem" 
                 fw={900} 
                 mb="md"
                 style={{ 
@@ -55,37 +54,38 @@ export default function LandingPage() {
                   WebkitTextFillColor: 'transparent', 
                   backgroundClip: 'text', 
                   letterSpacing: '-0.02em', 
-                  lineHeight: 1.1 
+                  lineHeight: 1.1,
+                  fontSize: 'clamp(1.75rem, 5vw, 3.5rem)'
                 }}
               >
                 Welcome to YieldGuard
               </Title>
               <Text 
-                size="lg" 
                 c="dimmed" 
                 maw={750} 
                 mt="lg" 
                 fw={500} 
-                style={{ lineHeight: 1.7, color: '#64748b' }}
+                mx="auto"
+                px="md"
+                style={{ lineHeight: 1.7, color: '#64748b', fontSize: 'clamp(0.875rem, 2vw, 1.125rem)' }}
               >
                 The future of crop insurance. Fusing high-resolution UAV imagery with real-time IoT sensor data to deliver precise yield estimates and automated claim verification for PMFBY.
               </Text>
-              <Group mt={40} justify="center" gap="lg">
+              <Stack mt={40} gap="md" maw={600} mx="auto" px="md">
                 <Link href="/dashboard" style={{ textDecoration: 'none' }}>
                   <Button 
-                    size="xl" 
+                    size="lg"
                     radius="lg" 
                     gradient={{ from: '#2563eb', to: '#1e40af', deg: 135 }} 
                     variant="gradient" 
-                    rightSection={<IconArrowRight size={22} stroke={2.5} />}
+                    rightSection={<IconArrowRight size={20} stroke={2.5} />}
                     component="div"
+                    fullWidth
                     style={{ 
-                      height: 64, 
-                      paddingLeft: 48, 
-                      paddingRight: 48, 
-                      fontSize: '1.125rem', 
+                      height: 56,
+                      fontSize: 'clamp(0.875rem, 2vw, 1.125rem)', 
                       fontWeight: 700, 
-                      boxShadow: '0 12px 48px rgba(37, 99, 235, 0.4)',
+                      boxShadow: '0 8px 24px rgba(37, 99, 235, 0.3)',
                       letterSpacing: '0.01em',
                     }}
                   >
@@ -94,27 +94,26 @@ export default function LandingPage() {
                 </Link>
                 <Link href="/farmer" style={{ textDecoration: 'none' }}>
                   <Button 
-                    size="xl" 
+                    size="lg"
                     radius="lg" 
                     gradient={{ from: '#10b981', to: '#059669', deg: 135 }} 
                     variant="gradient" 
-                    rightSection={<IconArrowRight size={22} stroke={2.5} />}
+                    rightSection={<IconArrowRight size={20} stroke={2.5} />}
                     component="div"
+                    fullWidth
                     style={{ 
-                      height: 64, 
-                      paddingLeft: 48, 
-                      paddingRight: 48, 
-                      fontSize: '1.125rem', 
+                      height: 56,
+                      fontSize: 'clamp(0.875rem, 2vw, 1.125rem)', 
                       fontWeight: 700, 
-                      boxShadow: '0 12px 48px rgba(16, 185, 129, 0.4)',
+                      boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)',
                       letterSpacing: '0.01em',
                     }}
                   >
                     Farmer Portal (CropIQ)
                   </Button>
                 </Link>
-              </Group>
-              <Group mt="xl" gap="xl" justify="center">
+              </Stack>
+              <Group mt="xl" gap="xl" justify="center" px="md" wrap="wrap">
                 <Group gap="xs"><ThemeIcon size="sm" radius="xl" color="green" variant="light"><IconShieldCheck size={14} /></ThemeIcon><Text size="sm" c="dimmed" fw={600}>Blockchain Secured</Text></Group>
                 <Group gap="xs"><ThemeIcon size="sm" radius="xl" color="blue" variant="light"><IconChartLine size={14} /></ThemeIcon><Text size="sm" c="dimmed" fw={600}>AI-Powered Analytics</Text></Group>
               </Group>
@@ -122,40 +121,69 @@ export default function LandingPage() {
           </Stack>
         </Container>
       </Box>
-      <Container size="xl" py={80}>
-        <Stack gap={50}>
-          <Stack gap="md" align="center">
-            <Title order={2} size="2.5rem" fw={800} ta="center" c="dark">Enterprise-Grade Features</Title>
-            <Text size="lg" c="dimmed" ta="center" maw={600}>Cutting-edge technology designed for modern agricultural insurance assessment</Text>
-          </Stack>
-          <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="xl">
-            {features.map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <Paper key={index} shadow="md" radius="lg" p="xl" withBorder style={{ background: '#ffffff', border: '1px solid var(--mantine-color-gray-2)', transition: 'all 0.3s ease', cursor: 'pointer' }}>
-                  <Stack gap="lg">
-                    <ThemeIcon size={60} radius="md" variant="light" color={feature.color} style={{ background: `var(--mantine-color-${feature.color}-0)` }}><Icon size={32} stroke={2} /></ThemeIcon>
-                    <Stack gap="xs">
-                      <Title order={3} size="1.3rem" fw={700}>{feature.title}</Title>
-                      <Text size="sm" c="dimmed" style={{ lineHeight: 1.6 }}>{feature.description}</Text>
-                    </Stack>
-                  </Stack>
-                </Paper>
-              );
-            })}
+
+      {/* Features */}
+      <Container size="lg" py={80} px="md" style={{ paddingTop: 'clamp(40px, 8vw, 80px)', paddingBottom: 'clamp(40px, 8vw, 80px)' }}>
+        <Stack gap={60}>
+          <div style={{ textAlign: 'center' }}>
+            <Title order={2} fw={800} mb="md" style={{ color: '#0f172a', fontSize: 'clamp(1.5rem, 4vw, 2.5rem)' }}>
+              Platform Features
+            </Title>
+            <Text c="dimmed" maw={650} mx="auto" style={{ fontSize: 'clamp(0.875rem, 2vw, 1.125rem)' }}>
+              Comprehensive crop insurance solution powered by cutting-edge technology
+            </Text>
+          </div>
+
+          <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={32}>
+            {features.map((feature, idx) => (
+              <Paper 
+                key={idx} 
+                p={32} 
+                radius="xl" 
+                shadow="sm" 
+                withBorder
+                style={{ 
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                }}>
+                <Stack gap="md">
+                  <ThemeIcon size={64} radius="xl" variant="light" color={feature.color} style={{ boxShadow: `0 8px 24px rgba(37, 99, 235, 0.15)` }}>
+                    <feature.icon size={32} stroke={2} />
+                  </ThemeIcon>
+                  <div>
+                    <Text size="xl" fw={700} mb="xs" style={{ color: '#0f172a', fontSize: 'clamp(1.125rem, 3vw, 1.25rem)' }}>
+                      {feature.title}
+                    </Text>
+                    <Text c="dimmed" style={{ lineHeight: 1.6, fontSize: 'clamp(0.8125rem, 2vw, 0.875rem)' }}>
+                      {feature.description}
+                    </Text>
+                  </div>
+                </Stack>
+              </Paper>
+            ))}
           </SimpleGrid>
         </Stack>
       </Container>
-      <Box style={{ background: '#ffffff', borderTop: '1px solid var(--mantine-color-gray-2)', padding: '40px 0', marginTop: 80 }}>
-        <Container size="xl">
-          <Group justify="space-between" align="center">
-            <Text size="sm" c="dimmed" fw={500}>© 2025 YieldGuard • Smart India Hackathon 2025</Text>
-            <Group gap="lg">
-              <Text size="sm" c="blue" fw={600} style={{ cursor: 'pointer' }}>Privacy Policy</Text>
-              <Text size="sm" c="blue" fw={600} style={{ cursor: 'pointer' }}>Terms of Service</Text>
-              <Text size="sm" c="blue" fw={600} style={{ cursor: 'pointer' }}>Support</Text>
+
+      {/* Footer */}
+      <Box style={{ background: 'var(--mantine-color-gray-1)', borderTop: '1px solid var(--mantine-color-gray-3)' }}>
+        <Container size="lg" py={40} px="md">
+          <Stack gap="xl">
+            <Group justify="space-between" wrap="wrap" style={{ gap: 16 }}>
+              <div style={{ textAlign: 'center', width: '100%' }}>
+                <Text size="lg" fw={700} mb="xs" style={{ color: '#0f172a' }}>YieldGuard</Text>
+                <Text size="sm" c="dimmed">AI-Powered Crop Insurance Platform</Text>
+              </div>
+              <Group gap="md" mx="auto" wrap="wrap" justify="center">
+                <Text size="sm" c="dimmed" style={{ cursor: 'pointer' }}>Privacy</Text>
+                <Text size="sm" c="dimmed" style={{ cursor: 'pointer' }}>Terms</Text>
+                <Text size="sm" c="dimmed" style={{ cursor: 'pointer' }}>Support</Text>
+              </Group>
             </Group>
-          </Group>
+            <Text size="sm" c="dimmed" ta="center">
+               2024 YieldGuard. All rights reserved. Made with  for SIH 2025
+            </Text>
+          </Stack>
         </Container>
       </Box>
     </Box>
