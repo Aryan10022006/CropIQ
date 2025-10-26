@@ -267,7 +267,17 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ##  Team
 
-Built with  by the YieldGuard Team
+Built with ❤️ by the YieldGuard Team
+
+### Contact Details
+
+- **Anmol Surekha**  
+  📞 +91 94796 89897
+  
+- **Aryan Tamboli**  
+  📞 +91 97022 76874
+  
+
 
 ##  Support
 
